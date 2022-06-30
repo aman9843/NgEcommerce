@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const db = require('../models')
 const User = db.Users
+const generateToken = require('../util/generateToken')
 
 
 // Registeration

@@ -5,6 +5,7 @@ const db = require('./models')
 const userRoutes = require('./routes/userRoutes')
 const categoriesRoutes = require('./routes/categoryRoutes')
 const productRoutes = require('./routes/productRoutes')
+const orderItemsRoutes = require('./routes/orderItemRoutes')
 const {notFound,errorHandler} = require('./middleware/errorHandler');
 
 
@@ -23,6 +24,7 @@ app.use(cors())
 app.use('/api/users',userRoutes)
 app.use('/api',categoriesRoutes)
 app.use('/api',productRoutes)
+app.use('/api',orderItemsRoutes)
 app.use(notFound);
 app.use(errorHandler);
 dotenv.config({path:'./config/config.env'})

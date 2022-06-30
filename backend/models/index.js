@@ -46,10 +46,21 @@ db.Sequelize = Sequelize;
 db.Users = require("./users")(sequelize, Sequelize);
 db.Products = require('./products')(sequelize,Sequelize)
 db.Categories = require('./categories')(sequelize,Sequelize)
+db.Orders = require('./orders')(sequelize,Sequelize)
+db.OrderItems = require('./orderItems') (sequelize,Sequelize)
 
 
 // Realtionship with the models 
 db.Categories.hasMany(db.Products);
 db.Products.belongsTo(db.Categories)
+
+// Relationship between Products & OrderItems
+db.Products.hasMany(db.OrderItems);
+db.OrderItems.belongsTo(db.Products)
+
+// relationship between Orders & OrderItems & Users
+db.OrderItems.hasMany(db.Orders);
+db.Orders.belongsTo(db.OrderItems)
+db.Orders.belongsTo(db.Users)
 
 module.exports = db
